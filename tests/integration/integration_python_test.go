@@ -1519,7 +1519,9 @@ func TestPackageAddPython(t *testing.T) {
 	}
 }
 
-func TestPackageAddWithPublisherSet(t *testing.T) {
+func TestPackageAddWithPublisherSetPython(t *testing.T) {
+	t.Parallel()
+
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
 
