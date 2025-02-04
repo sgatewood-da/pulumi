@@ -1570,12 +1570,12 @@ func TestConvertTerraformProviderPython(t *testing.T) {
 	assert.NoError(t, err)
 	found := false
 	for _, dep := range a.Dependencies {
-		if dep.Name == "pulumi_supabase" {
+		if dep.Name == "supabase_supabase" {
 			found = true
 			break
 		}
 	}
-	require.True(t, found, "pulumi_subabase should be installed")
+	require.True(t, found, "supabase_subabase should be installed"))
 }
 
 func TestConfigGetterOverloads(t *testing.T) {
