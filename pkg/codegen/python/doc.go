@@ -47,16 +47,20 @@ func (d DocLanguageHelper) GetDocLinkForResourceType(pkg *schema.Package, modNam
 
 	var path string
 	var fqdnTypeName string
+	publisher := "pulumi"
+	if pkg.Publisher != "" {
+		publisher = strings.ToLower(strings.ReplaceAll(pkg.Publisher, "_", "-"))
+	}
 	switch {
 	case pkg.Name != "" && modName != "":
-		path = fmt.Sprintf("pulumi_%s/%s", pkg.Name, modName)
-		fqdnTypeName = fmt.Sprintf("%s_%s.%s.%s", pkg.Publisher, pkg.Name, modName, typeName)
+		path = fmt.Sprintf("%s_%s/%s", publisher, pkg.Name, modName)
+		fqdnTypeName = fmt.Sprintf("%s_%s.%s.%s", publisher, pkg.Name, modName, typeName)
 	case pkg.Name == "" && modName != "":
 		path = modName
 		fqdnTypeName = fmt.Sprintf("%s.%s", modName, typeName)
 	case pkg.Name != "" && modName == "":
-		path = "pulumi_" + pkg.Name
-		fqdnTypeName = fmt.Sprintf("%s_%s.%s", pkg.Publisher, pkg.Name, typeName)
+		path = publisher + "_" + pkg.Name
+		fqdnTypeName = fmt.Sprintf("%s_%s.%s", publisher, pkg.Name, typeName)
 	}
 
 	return fmt.Sprintf("/docs/reference/pkg/python/%s/#%s", path, fqdnTypeName)
