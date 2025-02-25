@@ -1977,6 +1977,8 @@ type PackageInfoSpec struct {
 	PluginDownloadURL string `json:"pluginDownloadURL,omitempty" yaml:"pluginDownloadURL,omitempty"`
 	// Publisher is the name of the person or organization that authored and published the package.
 	Publisher string `json:"publisher,omitempty" yaml:"publisher,omitempty"`
+	// Namespace is the namespace of the package, that's used to diambiguate the package name.
+	Namespace string `json:"namespace,omitempty" yaml:"namespace,omitempty"`
 
 	// Meta contains information for the importer about this package.
 	Meta *MetadataSpec `json:"meta,omitempty" yaml:"meta,omitempty"`
