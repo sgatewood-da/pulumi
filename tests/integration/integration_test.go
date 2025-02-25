@@ -1431,7 +1431,8 @@ func TestPulumiNewLocalTemplatePath(t *testing.T) {
 	e.CWD = cwd
 
 	templatePath := filepath.Join(templateDir, "python")
-	stdout, stderr := e.RunCommand("pulumi", "new", templatePath, "--generate-only", "--yes", "--force")
+	stdout, stderr := e.RunCommand("pulumi", "new", templatePath,
+		"--generate-only", "--yes", "--force", "--non-interactive")
 	require.Empty(t, stderr)
 	require.Contains(t, stdout, "Your new project is ready to go")
 }
